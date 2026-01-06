@@ -33,7 +33,7 @@ const handleScroll = () => {
 
 const scrollToSection = (href: string) => {
     isMobileMenuOpen.value = false;
-    const element = document.querySelector(href);
+    const element = document.querySelector(href) as HTMLElement;
     if (element) {
         const navbarHeight = 80;
         const elementPosition = element.offsetTop - navbarHeight;
