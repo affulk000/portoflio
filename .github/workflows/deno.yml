@@ -20,7 +20,10 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31
         with:
-          deno-version: v1.x
+          deno-version: v2.x
+
+      - name: Remove old lockfile
+        run: rm -f deno.lock
 
       - name: Build project
         run: deno task build
@@ -36,7 +39,10 @@ jobs:
       - name: Setup Deno
         uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31
         with:
-          deno-version: v1.x
+          deno-version: v2.x
+
+      - name: Remove old lockfile
+        run: rm -f deno.lock
 
       - name: Build project
         run: deno task build
