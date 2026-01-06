@@ -76,7 +76,7 @@ const projects = computed<Project[]>(() => {
             metrics: getMetrics(project),
             githubUrl: project.githubUrl,
             liveUrl: project.demoUrl,
-            color: colors[index % colors.length]
+            color: colors[index % colors.length] as "accent" | "primary" | "orange"
         };
     });
 });
