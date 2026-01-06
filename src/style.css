@@ -106,6 +106,19 @@ html.light section {
     color: black;
 }
 
+html.light input,
+html.light textarea,
+html.light select {
+    background-color: white !important;
+    color: #1f2937 !important;
+    border-color: #d1d5db !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+    color: #9ca3af !important;
+}
+
 html.light .glass-morphism,
 html.light .glass-morphism-dark {
     background: rgba(255, 255, 255, 0.9) !important;
