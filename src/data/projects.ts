@@ -47,7 +47,7 @@ export const projects: readonly Project[] = [
         category: "web",
         status: "completed",
         featured: true,
-        demoUrl: "http://localhost:5173",
+        demoUrl: "https://afful-portfolio.deno.dev/",
         githubUrl: "https://github.com/affulk000/portfolio",
         startDate: "2024-12-01",
         endDate: "2024-12-31",
