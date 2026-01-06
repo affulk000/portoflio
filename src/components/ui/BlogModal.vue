@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, computed, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 import type { BlogPost } from "@data/blog";
 
