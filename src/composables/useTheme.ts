@@ -19,7 +19,7 @@ const applyTheme = (themeValue: 'light' | 'dark' | 'system') => {
 
 // Initialize
 if (typeof window !== 'undefined') {
-  const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | 'system' || 'system';
+  const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system';
   theme.value = savedTheme;
   applyTheme(savedTheme);
   
