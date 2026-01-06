@@ -19,9 +19,10 @@ const applyTheme = (themeValue: 'light' | 'dark' | 'system') => {
 
 // Initialize
 if (typeof window !== 'undefined') {
-  const savedTheme = (localStorage.getItem('theme') as 'light' | 'dark' | 'system') || 'system';
-  theme.value = savedTheme;
-  applyTheme(savedTheme);
+  const savedTheme = localStorage.getItem('theme');
+  const validTheme = (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system') ? savedTheme : 'system';
+  theme.value = validTheme;
+  applyTheme(validTheme);
   
   // Listen for system theme changes
   window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
