@@ -1,0 +1,13 @@
+{
+  "tasks": {
+    "dev": "deno run --allow-net --allow-read --allow-env npm:vite",
+    "build": "deno run --allow-net --allow-read --allow-env --allow-write npm:vite build",
+    "preview": "deno run --allow-net --allow-read --allow-env npm:vite preview",
+    "serve": "deno run --allow-net --allow-read main.ts"
+  },
+  "imports": {
+    "vue": "npm:vue@^3.5.24",
+    "@vitejs/plugin-vue": "npm:@vitejs/plugin-vue@^6.0.1",
+    "vite": "npm:vite@^7.2.4"
+  }
+}

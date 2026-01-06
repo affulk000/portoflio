@@ -1,0 +1,21 @@
+{
+  "name": "Emmanuel Afful - Backend Engineer",
+  "short_name": "Emmanuel Afful",
+  "description": "Backend Engineer specializing in Go, PostgreSQL, and multi-tenant SaaS architecture",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f0f19",
+  "theme_color": "#FF6B35",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon-180x180.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ]
+}
