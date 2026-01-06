@@ -1,4 +1,4 @@
-name: Deploy to Deno Deploy
+name: Build and Test
 
 on:
   push:
@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
   test:
@@ -30,32 +29,3 @@ jobs:
 
       - name: Build project
         run: deno task build
-
-  deploy:
-    needs: test
-    runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
-    steps:
-      - name: Setup repo
-        uses: actions/checkout@v4
-
-      - name: Setup Deno
-        uses: denoland/setup-deno@61fe2df320078202e33d7d5ad347e7dcfa0e8f31
-        with:
-          deno-version: v2.x
-
-      - name: Remove old lockfile
-        run: rm -f deno.lock
-
-      - name: Install dependencies
-        run: deno install
-
-      - name: Build project
-        run: deno task build
-
-      - name: Deploy to Deno Deploy
-        uses: denoland/deployctl@v1
-        with:
-          project: "afful-portfolio"
-          entrypoint: "main.ts"
-          root: "."
