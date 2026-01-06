@@ -66,7 +66,7 @@ useModernScrollAnimation(testimonialsRef, {
             <!-- Testimonials Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div
-                    v-for="(testimonial, index) in testimonials.slice(0, 6)"
+                    v-for="(testimonial, _index) in testimonials.slice(0, 6)"
                     :key="testimonial.uuid"
                     class="glass-morphism-dark p-6 rounded-xl border border-white/10 hover:border-accent-500/30 transition-all duration-300 group hover:scale-105"
                 >
