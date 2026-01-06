@@ -1092,6 +1092,11 @@
     }
   },
   "workspace": {
+    "dependencies": [
+      "npm:@vitejs/plugin-vue@^6.0.1",
+      "npm:vite@^7.2.4",
+      "npm:vue@^3.5.24"
+    ],
     "packageJson": {
       "dependencies": [
         "npm:@iconify/vue@5",

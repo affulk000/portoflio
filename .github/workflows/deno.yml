@@ -25,6 +25,9 @@ jobs:
       - name: Remove old lockfile
         run: rm -f deno.lock
 
+      - name: Install dependencies
+        run: deno install
+
       - name: Build project
         run: deno task build
 
@@ -43,6 +46,9 @@ jobs:
 
       - name: Remove old lockfile
         run: rm -f deno.lock
+
+      - name: Install dependencies
+        run: deno install
 
       - name: Build project
         run: deno task build
