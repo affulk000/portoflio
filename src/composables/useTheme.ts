@@ -36,10 +36,11 @@ export const useTheme = () => {
   const toggleTheme = () => {
     const themes: ('light' | 'dark' | 'system')[] = ['light', 'dark', 'system'];
     const currentIndex = themes.indexOf(theme.value);
-    theme.value = themes[(currentIndex + 1) % themes.length];
+    const nextTheme = themes[(currentIndex + 1) % themes.length];
+    theme.value = nextTheme;
     
-    applyTheme(theme.value);
-    localStorage.setItem('theme', theme.value);
+    applyTheme(nextTheme);
+    localStorage.setItem('theme', nextTheme);
   };
 
   return {
