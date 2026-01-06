@@ -19,7 +19,6 @@ export function useModernScrollAnimation(
 ) {
     const {
         parallaxSpeed = 0.5,
-        fadeDistance = 300,
         scaleRange = [0.8, 1],
         rotateRange = [-5, 5],
         blurRange = [0, 10],
