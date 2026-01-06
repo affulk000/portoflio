@@ -1,15 +1,17 @@
 import { ref } from 'vue';
 
-const theme = ref<'light' | 'dark' | 'system'>('system');
+type ThemeType = 'light' | 'dark' | 'system';
+
+const theme = ref<ThemeType>('system');
 const isDark = ref(true);
 
 // Get system preference
-const getSystemTheme = () => {
+const getSystemTheme = (): 'light' | 'dark' => {
   return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
 };
 
 // Apply theme to DOM
-const applyTheme = (themeValue: 'light' | 'dark' | 'system') => {
+const applyTheme = (themeValue: ThemeType) => {
   const actualTheme = themeValue === 'system' ? getSystemTheme() : themeValue;
   isDark.value = actualTheme === 'dark';
   
@@ -20,7 +22,9 @@ const applyTheme = (themeValue: 'light' | 'dark' | 'system') => {
 // Initialize
 if (typeof window !== 'undefined') {
   const savedTheme = localStorage.getItem('theme');
-  const validTheme = (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system') ? savedTheme : 'system';
+  const validTheme: ThemeType = (savedTheme === 'light' || savedTheme === 'dark' || savedTheme === 'system') 
+    ? savedTheme as ThemeType 
+    : 'system';
   theme.value = validTheme;
   applyTheme(validTheme);
   
@@ -34,9 +38,9 @@ if (typeof window !== 'undefined') {
 
 export const useTheme = () => {
   const toggleTheme = () => {
-    const themes: ('light' | 'dark' | 'system')[] = ['light', 'dark', 'system'];
+    const themes: ThemeType[] = ['light', 'dark', 'system'];
     const currentIndex = themes.indexOf(theme.value);
-    const nextTheme = themes[(currentIndex + 1) % themes.length];
+    const nextTheme = themes[(currentIndex + 1) % themes.length]!;
     theme.value = nextTheme;
     
     applyTheme(nextTheme);
