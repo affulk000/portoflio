@@ -14,6 +14,7 @@ import NavBar from "@/components/layout/Navbar.vue";
 import Footer from "@/components/layout/Footer.vue";
 
 // Default SEO for homepage
+const baseUrl = import.meta.env.VITE_BASE_URL || "https://www.peridev.org";
 const baseUrl =
     import.meta.env.VITE_BASE_URL || "https://afful-portfolio.deno.dev";
 
@@ -41,6 +42,8 @@ useSEO({
             addressCountry: "Ghana",
         },
         sameAs: [
+            "https://www.peridev.org/",
+            "https://afful-portfolio.deno.dev/",
             "https://afful-portfolio.deno.dev/",
             "https://www.peridev.org/",
             "https://github.com/affulk000",

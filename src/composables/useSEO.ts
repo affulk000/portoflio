@@ -13,6 +13,7 @@ interface SEOOptions {
 
 export const useSEO = (options: SEOOptions = {}) => {
     const baseUrl =
+        import.meta.env.VITE_BASE_URL || "https://www.peridev.org";
         import.meta.env.VITE_BASE_URL || "https://afful-portfolio.deno.dev";
     const siteName = "Emmanuel Afful - Backend Engineer";
 

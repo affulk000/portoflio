@@ -1,4 +1,5 @@
 User-agent: *
 Allow: /
 
+Sitemap: https://www.peridev.org/sitemap.xml
 Sitemap: https://afful-portfolio.deno.dev/sitemap.xml
