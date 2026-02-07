@@ -12,7 +12,8 @@ interface SEOOptions {
 }
 
 export const useSEO = (options: SEOOptions = {}) => {
-    const baseUrl = import.meta.env.VITE_BASE_URL || 'http://localhost:5173';
+    const baseUrl =
+        import.meta.env.VITE_BASE_URL || "https://afful-portfolio.deno.dev";
     const siteName = "Emmanuel Afful - Backend Engineer";
 
     const defaultTitle =
