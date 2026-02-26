@@ -14,7 +14,7 @@ export const useGenerateCV = () => {
         const content = `
 EMMANUEL AFFUL
 System Software Engineer
-emmanuelafful946@gmail.com | Accra, Ghana
+emmanuel.afful@proton.me | Accra, Ghana
 GitHub: github.com/affulk000 | LinkedIn: linkedin.com/in/emmanuel-afful-74336517b
 
 PROFESSIONAL SUMMARY

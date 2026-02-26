@@ -120,7 +120,7 @@ const socialLinks = [
     {
         name: "Email",
         icon: "solar:letter-bold",
-        url: "mailto:emmanuelafful946@gmail.com",
+        url: "mailto:emmanuel.afful@proton.me",
         color: "hover:text-accent-400",
     },
 ];

@@ -119,11 +119,11 @@ const scrollToTop = () => {
                     </h4>
                     <div class="space-y-3">
                         <a
-                            href="mailto:emmanuelafful946@gmail.com"
+                            href="mailto:emmanuel.afful@proton.me"
                             class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600 dark:hover:text-accent-400 light:hover:text-primary-600 transition-colors"
                         >
                             <Icon icon="solar:letter-bold" class="text-lg" />
-                            <span>emmanuelafful946@gmail.com</span>
+                            <span>emmanuel.afful@proton.me</span>
                         </a>
                         <div
                             class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600"
