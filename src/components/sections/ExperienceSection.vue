@@ -7,8 +7,6 @@ import TimelineItem from "../ui/TimelineItem.vue";
 import { experiences } from "@data/experience.ts";
 import { education } from "@data/education.ts";
 
-const experienceSectionRef = ref<HTMLElement | null>(null);
-
 const activeTab = ref<"experience" | "education">("experience");
 
 const formattedEducation = computed(() => {
@@ -33,7 +31,6 @@ const formattedEducation = computed(() => {
 
 <template>
     <motion.section
-        ref="experienceSectionRef"
         id="experience"
         :initial="{ opacity: 0, y: 50 }"
         :whileInView="{ opacity: 1, y: 0 }"

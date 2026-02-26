@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { Icon } from "@iconify/vue";
 import { motion } from "motion-v";
-
-const aboutSectionRef = ref<HTMLElement | null>(null);
 
 const expertise = [
     {
@@ -75,7 +72,6 @@ const getColorClasses = (color: string) => {
 
 <template>
     <motion.section
-        ref="aboutSectionRef"
         id="about"
         :initial="{ opacity: 0, y: 50 }"
         :whileInView="{ opacity: 1, y: 0 }"

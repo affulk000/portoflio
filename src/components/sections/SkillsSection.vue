@@ -1,9 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { motion } from "motion-v";
 import { Icon } from "@iconify/vue";
-
-const skillsSectionRef = ref<HTMLElement | null>(null);
 
 const skills = [
     {
@@ -34,7 +31,6 @@ const skills = [
 
 <template>
     <motion.section
-        ref="skillsSectionRef"
         id="skills"
         :initial="{ opacity: 0, y: 50 }"
         :whileInView="{ opacity: 1, y: 0 }"
