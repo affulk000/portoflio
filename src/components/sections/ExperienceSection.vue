@@ -44,14 +44,6 @@ const formattedEducation = computed(() => {
         ref="experienceSectionRef"
         id="experience"
         class="relative overflow-hidden py-24 lg:py-32"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-500) 0%,
-                var(--color-dark-400) 50%,
-                var(--color-dark-500) 100%
-            );
-        "
     >
         <!-- Animated Background Elements -->
         <div class="absolute inset-0 opacity-30 pointer-events-none">

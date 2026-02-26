@@ -170,13 +170,6 @@ const prevProject = () => {
         ref="projectsSectionRef"
         id="project"
         class="relative overflow-hidden py-24 lg:py-32"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-400) 0%,
-                var(--color-dark-600) 100%
-            );
-        "
     >
         <!-- Background Decoration -->
         <div class="absolute inset-0 opacity-10 pointer-events-none">

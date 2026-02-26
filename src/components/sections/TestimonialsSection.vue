@@ -20,14 +20,6 @@ useModernScrollAnimation(testimonialsRef, {
         ref="testimonialsRef"
         id="testimonials"
         class="relative py-24 lg:py-32 overflow-hidden"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-500) 0%,
-                var(--color-dark-400) 50%,
-                var(--color-dark-500) 100%
-            );
-        "
     >
         <!-- Background Elements -->
         <div class="absolute inset-0 opacity-10 pointer-events-none">

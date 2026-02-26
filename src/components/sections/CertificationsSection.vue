@@ -20,13 +20,6 @@ useModernScrollAnimation(certificationsSectionRef, {
         ref="certificationsSectionRef"
         id="certificate"
         class="relative min-h-screen flex items-center justify-center overflow-hidden py-24 lg:py-32"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-500) 0%,
-                var(--color-dark-400) 100%
-            );
-        "
     >
         <div class="container-custom w-full">
             <!-- Section Header -->

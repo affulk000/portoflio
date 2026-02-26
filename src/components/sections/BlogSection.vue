@@ -48,13 +48,6 @@ const formatDate = (dateString: string) => {
         ref="blogRef"
         id="blog"
         class="relative py-24 lg:py-32 overflow-hidden"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-400) 0%,
-                var(--color-dark-600) 100%
-            );
-        "
     >
         <!-- Background Elements -->
         <div class="absolute inset-0 opacity-10 pointer-events-none">

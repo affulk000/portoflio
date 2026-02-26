@@ -107,14 +107,6 @@ onMounted(() => {
         ref="aboutSectionRef"
         id="about"
         class="relative py-24 lg:py-32 overflow-hidden"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-400) 0%,
-                var(--color-dark-500) 50%,
-                var(--color-dark-400) 100%
-            );
-        "
     >
         <!-- Enhanced Background Decorations -->
         <div class="absolute inset-0 opacity-10 pointer-events-none">

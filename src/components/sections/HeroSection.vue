@@ -169,14 +169,6 @@ onMounted(() => {
         ref="heroSectionRef"
         id="hero"
         class="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style="
-            background: linear-gradient(
-                180deg,
-                var(--color-dark-600) 0%,
-                var(--color-dark-500) 50%,
-                var(--color-dark-400) 100%
-            );
-        "
     >
         <!-- Enhanced Animated Background Elements -->
         <div
