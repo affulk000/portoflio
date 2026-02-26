@@ -90,13 +90,13 @@ const socialLinks = [
     {
         name: "LinkedIn",
         icon: "mdi:linkedin",
-        url: "https://linkedin.com/in/emmanuel-afful-6ba505260",
+        url: "https://www.linkedin.com/in/emmanuel-afful-74336517b",
         color: "hover:text-blue-400",
     },
     {
         name: "Email",
         icon: "solar:letter-bold",
-        url: "mailto:emmanuelafful946@gmail.com",
+        url: "mailto:emmanuel.afful@proton.me",
         color: "hover:text-accent-400",
     },
 ];

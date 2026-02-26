@@ -51,10 +51,10 @@
                             Email
                         </h3>
                         <a
-                            href="mailto:emmanuelafful946@gmail.com"
+                            href="mailto:emmanuel.afful@proton.me"
                             class="text-gray-400 hover:text-white transition-colors text-sm"
                         >
-                            emmanuelafful946@gmail.com
+                            emmanuel.afful@proton.me
                         </a>
                     </div>
 
@@ -95,7 +95,7 @@
                         opportunities
                     </p>
                     <a
-                        href="mailto:emmanuelafful946@gmail.com"
+                        href="mailto:emmanuel.afful@proton.me"
                         class="btn-accent"
                     >
                         Send Message

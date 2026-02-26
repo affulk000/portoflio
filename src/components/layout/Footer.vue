@@ -12,12 +12,12 @@ const socialLinks = [
     {
         name: "LinkedIn",
         icon: "mdi:linkedin",
-        url: "https://linkedin.com/in/emmanuel-afful-6ba505260",
+        url: "https://www.linkedin.com/in/emmanuel-afful-74336517b",
     },
     {
         name: "Email",
         icon: "solar:letter-bold",
-        url: "mailto:emmanuelafful946@gmail.com",
+        url: "mailto:emmanuel.afful@proton.me",
     },
 ];
 
@@ -115,11 +115,11 @@ const scrollToTop = () => {
                     </h4>
                     <div class="space-y-3">
                         <a
-                            href="mailto:emmanuelafful946@gmail.com"
+                            href="mailto:emmanuel.afful@proton.me"
                             class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600 dark:hover:text-accent-400 light:hover:text-primary-600 transition-colors"
                         >
                             <Icon icon="solar:letter-bold" class="text-lg" />
-                            <span>emmanuelafful946@gmail.com</span>
+                            <span>emmanuel.afful@proton.me</span>
                         </a>
                         <div class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600">
                             <Icon icon="solar:map-point-bold" class="text-lg" />

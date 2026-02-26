@@ -24,7 +24,7 @@ export interface SocialLink {
 }
 
 export const contactInfo: ContactInfo = {
-    email: "affulk000@gmail.com",
+    email: "emmanuel.afful@proton.me",
     phone: "+233 XX XXX XXXX", // Placeholder for privacy
     location: {
         city: "Accra",
@@ -50,8 +50,8 @@ export const socialLinks: readonly SocialLink[] = [
     {
         uuid: "social-linkedin",
         platform: "LinkedIn",
-        url: "http://linkedin.com/in/emmanuel-afful-6ba505260",
-        username: "emmanuel-afful-6ba505260",
+        url: "https://www.linkedin.com/in/emmanuel-afful-74336517b",
+        username: "emmanuel-afful-74336517b",
         icon: "devicon:linkedin",
         primary: true
     },
@@ -66,8 +66,8 @@ export const socialLinks: readonly SocialLink[] = [
     {
         uuid: "social-email",
         platform: "Email",
-        url: "mailto:affulk000@gmail.com",
-        username: "affulk000@gmail.com",
+        url: "mailto:emmanuel.afful@proton.me",
+        username: "emmanuel.afful@proton.me",
         icon: "solar:letter-bold",
         primary: true
     }
