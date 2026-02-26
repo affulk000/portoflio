@@ -13,6 +13,21 @@ import ScrollProgress from "@/components/layout/ScrollProgress.vue";
 import NavBar from "@/components/layout/Navbar.vue";
 import Footer from "@/components/layout/Footer.vue";
 
+const _unusedComponents = {
+    HeroSection,
+    AboutSection,
+    ProjectsSection,
+    ExperienceSection,
+    SkillsSection,
+    TestimonialsSection,
+    BlogSection,
+    CertificationsSection,
+    ScrollProgress,
+    NavBar,
+    Footer,
+};
+void _unusedComponents;
+
 // Default SEO for homepage
 const baseUrl = import.meta.env.VITE_BASE_URL || "https://www.peridev.org";
 
