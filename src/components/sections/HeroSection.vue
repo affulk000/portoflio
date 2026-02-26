@@ -168,7 +168,7 @@ onMounted(() => {
     <section
         ref="heroSectionRef"
         id="hero"
-        class="relative h-screen flex items-center justify-center overflow-hidden pt-32"
+        class="relative min-h-screen flex items-center justify-center overflow-hidden pt-24"
         style="
             background: linear-gradient(
                 180deg,
