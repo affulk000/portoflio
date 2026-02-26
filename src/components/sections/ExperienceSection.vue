@@ -6,16 +6,8 @@ import TimelineFeed from "../ui/TimelineFeed.vue";
 import TimelineItem from "../ui/TimelineItem.vue";
 import { experiences } from "@data/experience.ts";
 import { education } from "@data/education.ts";
-import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
 
 const experienceSectionRef = ref<HTMLElement | null>(null);
-
-// Modern scroll animation with fade out
-useModernScrollAnimation(experienceSectionRef, {
-    parallaxSpeed: 0.2,
-    enableParallax: true,
-    enableFade: true,
-});
 
 const activeTab = ref<"experience" | "education">("experience");
 
@@ -40,9 +32,13 @@ const formattedEducation = computed(() => {
 </script>
 
 <template>
-    <section
+    <motion.section
         ref="experienceSectionRef"
         id="experience"
+        :initial="{ opacity: 0, y: 50 }"
+        :whileInView="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6 }"
+        :viewport="{ once: true, amount: 0.2 }"
         class="relative overflow-hidden py-24 lg:py-32"
     >
         <!-- Animated Background Elements -->
@@ -213,5 +209,5 @@ const formattedEducation = computed(() => {
                 </TimelineFeed>
             </motion.div>
         </div>
-    </section>
+    </motion.section>
 </template>

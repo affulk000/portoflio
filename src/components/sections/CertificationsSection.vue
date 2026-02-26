@@ -1,32 +1,25 @@
 <script setup lang="ts">
-import { ref } from "vue";
 import { motion } from "motion-v";
 import { Icon } from "@iconify/vue";
 import { certifications } from "@data/certification";
-import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
-
-const certificationsSectionRef = ref<HTMLElement | null>(null);
-
-// Modern scroll animation with fade out
-useModernScrollAnimation(certificationsSectionRef, {
-    parallaxSpeed: 0.25,
-    enableParallax: true,
-    enableFade: true,
-});
 </script>
 
 <template>
-    <section
-        ref="certificationsSectionRef"
+    <motion.section
         id="certificate"
+        :initial="{ opacity: 0 }"
+        :whileInView="{ opacity: 1 }"
+        :transition="{ duration: 0.6 }"
+        :viewport="{ once: true, amount: 0.2 }"
         class="relative min-h-screen flex items-center justify-center overflow-hidden py-24 lg:py-32"
     >
         <div class="container-custom w-full">
             <!-- Section Header -->
             <motion.div
                 :initial="{ opacity: 0, y: 30 }"
-                :animate="{ opacity: 1, y: 0 }"
-                :transition="{ duration: 0.6, ease: 'easeOut' }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :transition="{ duration: 0.6 }"
+                :viewport="{ once: true, amount: 0.3 }"
                 class="text-center mb-12 sm:mb-16 md:mb-20 lg:mb-24"
             >
                 <div
@@ -56,12 +49,9 @@ useModernScrollAnimation(certificationsSectionRef, {
                     v-for="(cert, index) in certifications"
                     :key="cert.uuid"
                     :initial="{ opacity: 0, y: 50 }"
-                    :animate="{ opacity: 1, y: 0 }"
-                    :transition="{
-                        duration: 0.5,
-                        delay: index * 0.1,
-                        ease: 'easeOut',
-                    }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :transition="{ duration: 0.5, delay: index * 0.1 }"
+                    :viewport="{ once: true, amount: 0.2 }"
                     class="glass-morphism-dark p-5 sm:p-6 rounded-xl sm:rounded-2xl card-hover group relative overflow-hidden w-full max-w-sm md:max-w-md lg:max-w-sm"
                 >
                     <!-- Certificate Icon/Logo -->
@@ -201,5 +191,5 @@ useModernScrollAnimation(certificationsSectionRef, {
                 <p class="text-body text-gray-400">No certifications yet</p>
             </div>
         </div>
-    </section>
+    </motion.section>
 </template>

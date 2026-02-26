@@ -1,11 +1,10 @@
 <script setup lang="ts">
 import { ref } from "vue";
+import { motion } from "motion-v";
 import { Icon } from "@iconify/vue";
-import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
 import { getRecentBlogPosts, type BlogPost } from "@data/blog";
 import BlogModal from "@/components/ui/BlogModal.vue";
 
-const blogRef = ref<HTMLElement | null>(null);
 const recentPosts = getRecentBlogPosts(3);
 const selectedPost = ref<BlogPost | null>(null);
 
@@ -16,12 +15,6 @@ const openPost = (post: BlogPost) => {
 const closeModal = () => {
     selectedPost.value = null;
 };
-
-useModernScrollAnimation(blogRef, {
-    parallaxSpeed: 0.15,
-    enableParallax: true,
-    enableFade: true,
-});
 
 const getCategoryColor = (category: string) => {
     const colors = {
@@ -44,9 +37,12 @@ const formatDate = (dateString: string) => {
 </script>
 
 <template>
-    <section
-        ref="blogRef"
+    <motion.section
         id="blog"
+        :initial="{ opacity: 0 }"
+        :whileInView="{ opacity: 1 }"
+        :transition="{ duration: 0.6 }"
+        :viewport="{ once: true, amount: 0.2 }"
         class="relative py-24 lg:py-32 overflow-hidden"
     >
         <!-- Background Elements -->
@@ -65,7 +61,13 @@ const formatDate = (dateString: string) => {
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <!-- Section Header -->
-            <div class="text-center mb-16 lg:mb-20">
+            <motion.div
+                :initial="{ opacity: 0, y: 30 }"
+                :whileInView="{ opacity: 1, y: 0 }"
+                :transition="{ duration: 0.6 }"
+                :viewport="{ once: true, amount: 0.3 }"
+                class="text-center mb-16 lg:mb-20"
+            >
                 <div
                     class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary-500/10 border border-primary-500/20 text-primary-400 text-sm font-semibold mb-6"
                 >
@@ -81,13 +83,17 @@ const formatDate = (dateString: string) => {
                 <p class="text-lg text-gray-400 max-w-3xl mx-auto leading-relaxed">
                     Sharing knowledge about backend development, architecture patterns, and best practices
                 </p>
-            </div>
+            </motion.div>
 
             <!-- Blog Posts Grid -->
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <article
-                    v-for="post in recentPosts"
+                <motion.article
+                    v-for="(post, index) in recentPosts"
                     :key="post.uuid"
+                    :initial="{ opacity: 0, y: 40 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :transition="{ duration: 0.5, delay: index * 0.15 }"
+                    :viewport="{ once: true, amount: 0.2 }"
                     class="glass-morphism-dark rounded-xl border border-white/10 overflow-hidden hover:border-primary-500/30 transition-all duration-300 group hover:scale-105"
                 >
                     <!-- Post Header -->
@@ -137,7 +143,7 @@ const formatDate = (dateString: string) => {
                             <Icon icon="solar:arrow-right-bold" class="text-sm" />
                         </button>
                     </div>
-                </article>
+                </motion.article>
             </div>
 
             <!-- View All Button -->
@@ -152,5 +158,5 @@ const formatDate = (dateString: string) => {
 
         <!-- Blog Modal -->
         <BlogModal :post="selectedPost" @close="closeModal" />
-    </section>
+    </motion.section>
 </template>

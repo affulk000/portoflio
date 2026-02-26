@@ -81,7 +81,6 @@ const projects = computed<Project[]>(() => {
 });
 
 const activeProjectIndex = ref(0);
-const projectsSectionRef = ref<HTMLElement | null>(null);
 
 const getColorClasses = (color: string) => {
     const colors = {
@@ -159,7 +158,6 @@ const prevProject = () => {
 
 <template>
     <motion.section
-        ref="projectsSectionRef"
         id="project"
         :initial="{ opacity: 0, y: 50 }"
         :whileInView="{ opacity: 1, y: 0 }"

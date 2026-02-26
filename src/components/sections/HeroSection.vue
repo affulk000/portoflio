@@ -1,29 +1,12 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
-import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
-import { useStaggeredAnimation } from "@composables/useStaggeredAnimation";
+import { motion } from "motion-v";
 import { useGenerateCV } from "@composables/useGenerateCV";
 import ContactModal from "@/components/ui/ContactModal.vue";
 
-const heroSectionRef = ref<HTMLElement | null>(null);
 const isContactModalOpen = ref(false);
-const statsElementsRef = ref<HTMLElement[]>([]);
 const { generateCV } = useGenerateCV();
-
-// Modern scroll animations
-useModernScrollAnimation(heroSectionRef, {
-    parallaxSpeed: 0.3,
-    enableParallax: true,
-    enableFade: true,
-});
-
-// Staggered animations for stats
-useStaggeredAnimation(statsElementsRef, {
-    staggerDelay: 150,
-    animationType: "fadeUp",
-    threshold: 0.2,
-});
 
 const roles = [
     "System Software Engineer",
@@ -165,9 +148,11 @@ onMounted(() => {
 </script>
 
 <template>
-    <section
-        ref="heroSectionRef"
+    <motion.section
         id="hero"
+        :initial="{ opacity: 0 }"
+        :animate="{ opacity: 1 }"
+        :transition="{ duration: 0.8 }"
         class="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
         <!-- Enhanced Animated Background Elements -->
@@ -560,14 +545,13 @@ onMounted(() => {
 
             <!-- Stats Section with Modern Animation -->
             <div class="grid grid-cols-3 gap-6 mt-20 lg:mt-32">
-                <div
+                <motion.div
                     v-for="(stat, index) in stats"
                     :key="stat.label"
-                    :ref="
-                        (el) => {
-                            if (el) statsElementsRef[index] = el as HTMLElement;
-                        }
-                    "
+                    :initial="{ opacity: 0, y: 30 }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :transition="{ duration: 0.5, delay: index * 0.1 }"
+                    :viewport="{ once: true, amount: 0.3 }"
                     class="glass-morphism-dark p-6 rounded-xl border border-white/10 text-center transition-all duration-300 hover:border-accent-500/30 hover:scale-105 hover:shadow-glow-accent group"
                 >
                     <Icon
@@ -580,7 +564,7 @@ onMounted(() => {
                         {{ stat.value }}
                     </div>
                     <div class="text-sm text-gray-400">{{ stat.label }}</div>
-                </div>
+                </motion.div>
             </div>
         </div>
 
@@ -598,7 +582,7 @@ onMounted(() => {
                 ></div>
             </div>
         </div>
-    </section>
+    </motion.section>
 
     <!-- Contact Modal -->
     <ContactModal

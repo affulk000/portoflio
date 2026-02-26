@@ -2,16 +2,8 @@
 import { ref } from "vue";
 import { motion } from "motion-v";
 import { Icon } from "@iconify/vue";
-import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
 
 const skillsSectionRef = ref<HTMLElement | null>(null);
-
-// Modern scroll animation with fade out
-useModernScrollAnimation(skillsSectionRef, {
-    parallaxSpeed: 0.3,
-    enableParallax: true,
-    enableFade: true,
-});
 
 const skills = [
     {
@@ -41,9 +33,13 @@ const skills = [
 </script>
 
 <template>
-    <section
+    <motion.section
         ref="skillsSectionRef"
         id="skills"
+        :initial="{ opacity: 0, y: 50 }"
+        :whileInView="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6 }"
+        :viewport="{ once: true, amount: 0.2 }"
         class="relative min-h-screen flex items-center justify-center overflow-hidden py-24 lg:py-32"
     >
         <div class="container-custom w-full">
@@ -80,12 +76,9 @@ const skills = [
                     v-for="(skill, index) in skills"
                     :key="skill.category"
                     :initial="{ opacity: 0, y: 50 }"
-                    :animate="{ opacity: 1, y: 0 }"
-                    :transition="{
-                        duration: 0.5,
-                        delay: index * 0.1,
-                        ease: 'easeOut',
-                    }"
+                    :whileInView="{ opacity: 1, y: 0 }"
+                    :transition="{ duration: 0.5, delay: index * 0.1 }"
+                    :viewport="{ once: true }"
                     class="glass-morphism-dark p-6 rounded-xl card-hover group relative overflow-hidden"
                 >
                     <div class="flex items-center gap-3 mb-4">
@@ -136,5 +129,5 @@ const skills = [
                 </motion.div>
             </div>
         </div>
-    </section>
+    </motion.section>
 </template>
