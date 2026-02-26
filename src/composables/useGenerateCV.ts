@@ -44,10 +44,10 @@ export const useGenerateCV = () => {
         doc.setFontSize(10);
         experiences.forEach((exp: Experience) => {
             if (y > 270) { doc.addPage(); y = 20; }
-            doc.setFont(undefined, "bold");
+            doc.setFont("helvetica", "bold");
             doc.text(`${exp.title} - ${exp.company}`, 20, y);
             y += 5;
-            doc.setFont(undefined, "normal");
+            doc.setFont("helvetica", "normal");
             doc.text(`${exp.date} | ${exp.location}`, 20, y);
             y += 5;
             const desc = doc.splitTextToSize(exp.description, 170);
@@ -64,10 +64,10 @@ export const useGenerateCV = () => {
         doc.setFontSize(10);
         projects.slice(0, 3).forEach((proj: Project) => {
             if (y > 270) { doc.addPage(); y = 20; }
-            doc.setFont(undefined, "bold");
+            doc.setFont("helvetica", "bold");
             doc.text(proj.title, 20, y);
             y += 5;
-            doc.setFont(undefined, "normal");
+            doc.setFont("helvetica", "normal");
             const desc = doc.splitTextToSize(proj.description, 170);
             doc.text(desc, 20, y);
             y += desc.length * 5 + 3;
@@ -82,9 +82,9 @@ export const useGenerateCV = () => {
         doc.setFontSize(10);
         skillCategories.forEach((cat: SkillCategory) => {
             if (y > 270) { doc.addPage(); y = 20; }
-            doc.setFont(undefined, "bold");
+            doc.setFont("helvetica", "bold");
             doc.text(`${cat.name}:`, 20, y);
-            doc.setFont(undefined, "normal");
+            doc.setFont("helvetica", "normal");
             doc.text(cat.skills.map(s => s.name).join(", "), 70, y);
             y += 5;
         });
@@ -98,10 +98,10 @@ export const useGenerateCV = () => {
         doc.setFontSize(10);
         education.forEach((edu: Education) => {
             if (y > 270) { doc.addPage(); y = 20; }
-            doc.setFont(undefined, "bold");
+            doc.setFont("helvetica", "bold");
             doc.text(`${edu.title} - ${edu.institution}`, 20, y);
             y += 5;
-            doc.setFont(undefined, "normal");
+            doc.setFont("helvetica", "normal");
             doc.text(`${edu.startDate} to ${edu.endDate} | ${edu.location}`, 20, y);
             y += 7;
         });
