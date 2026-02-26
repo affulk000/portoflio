@@ -58,7 +58,7 @@ useSEO({
             "https://www.peridev.org/",
             "https://afful-portfolio.deno.dev/",
             "https://github.com/affulk000",
-            "http://linkedin.com/in/emmanuel-afful-6ba505260", // Update
+            "http://linkedin.com/in/emmanuel-afful-74336517b",
             "https://twitter.com/affulk000", // Update if applicable
         ],
         knowsAbout: [
