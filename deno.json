@@ -10,5 +10,9 @@
     "@vitejs/plugin-vue": "npm:@vitejs/plugin-vue@^6.0.1",
     "vite": "npm:vite@^7.2.4",
     "@/": "./src/"
+  },
+  "allowScripts": {
+    "allow": ["npm:core-js@3.48.0"],
+    "deny": ["npm:esbuild@0.27.2"]
   }
 }
