@@ -1,8 +1,13 @@
-import { experience } from "@/data/experience";
+import { experiences } from "@/data/experience";
 import { projects } from "@/data/projects";
-import { skills } from "@/data/skills";
+import { skillCategories } from "@/data/skills";
 import { education } from "@/data/education";
 import { certifications } from "@/data/certification";
+import type { Experience } from "@/data/experience";
+import type { Project } from "@/data/projects";
+import type { SkillCategory } from "@/data/skills";
+import type { Education } from "@/data/education";
+import type { Certification } from "@/data/certification";
 
 export const useGenerateCV = () => {
     const generateCV = () => {
@@ -16,34 +21,34 @@ PROFESSIONAL SUMMARY
 Backend Engineer specializing in Go, PostgreSQL, and multi-tenant SaaS architecture with 4+ years of experience building scalable, secure systems with clean architecture and modern infrastructure.
 
 EXPERIENCE
-${experience.map(exp => `
+${experiences.map((exp: Experience) => `
 ${exp.title} - ${exp.company}
-${exp.period} | ${exp.location}
+${exp.date} | ${exp.location}
 ${exp.description}
-${exp.achievements.map(a => `• ${a}`).join('\n')}
+${exp.achievements.map((a: string) => `• ${a}`).join('\n')}
 `).join('\n')}
 
 PROJECTS
-${projects.slice(0, 5).map(proj => `
+${projects.slice(0, 5).map((proj: Project) => `
 ${proj.title}
 ${proj.description}
 Technologies: ${proj.technologies.join(', ')}
 `).join('\n')}
 
 TECHNICAL SKILLS
-${skills.map(cat => `
-${cat.category}: ${cat.items.map(i => i.name).join(', ')}
+${skillCategories.map((cat: SkillCategory) => `
+${cat.name}: ${cat.skills.map(i => i.name).join(', ')}
 `).join('\n')}
 
 EDUCATION
-${education.map(edu => `
-${edu.degree} - ${edu.institution}
-${edu.period} | ${edu.location}
+${education.map((edu: Education) => `
+${edu.title} - ${edu.institution}
+${edu.startDate} to ${edu.endDate} | ${edu.location}
 ${edu.description}
 `).join('\n')}
 
 CERTIFICATIONS
-${certifications.map(cert => `• ${cert.name} - ${cert.issuer} (${cert.date})`).join('\n')}
+${certifications.map((cert: Certification) => `• ${cert.title} - ${cert.issuer} (${cert.date})`).join('\n')}
 `;
 
         const blob = new Blob([content], { type: 'text/plain' });
