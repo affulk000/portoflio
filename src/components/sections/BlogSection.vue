@@ -143,10 +143,10 @@ const formatDate = (dateString: string) => {
 
             <!-- View All Button -->
             <div class="text-center mt-12">
-                <button class="px-8 py-4 rounded-xl bg-gradient-to-r from-primary-500 to-accent-500 hover:from-primary-600 hover:to-accent-600 text-white font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto">
-                    <Icon icon="solar:document-text-bold" class="text-lg" />
-                    <span>View All Articles</span>
-                    <Icon icon="solar:arrow-right-bold" class="text-lg" />
+                <button class="group px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-glow-accent flex items-center gap-3 mx-auto relative overflow-hidden" style="background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-600));">
+                    <span class="relative z-10">View All Articles</span>
+                    <Icon icon="solar:arrow-right-bold" class="text-lg relative z-10 transition-transform duration-300 group-hover:translate-x-1" />
+                    <span class="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>
             </div>
         </div>

@@ -485,27 +485,24 @@ const prevProject = () => {
                                         :href="activeProject().githubUrl"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="px-6 py-3 rounded-xl font-semibold text-white bg-gradient-to-r transition-all duration-300 hover:scale-105 hover:shadow-glow-accent flex items-center gap-2"
+                                        class="group px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-glow-accent flex items-center gap-2 relative overflow-hidden"
                                         :style="`background: linear-gradient(135deg, var(--color-${activeProject().color}-500), var(--color-primary-600))`"
                                     >
-                                        <Icon
-                                            icon="mdi:github"
-                                            class="text-lg"
-                                        />
-                                        <span>View on GitHub</span>
+                                        <Icon icon="mdi:github" class="text-lg relative z-10" />
+                                        <span class="relative z-10">View on GitHub</span>
+                                        <span class="absolute inset-0 bg-gradient-to-r from-accent-600 to-primary-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                                     </a>
                                     <a
                                         v-if="activeProject().liveUrl"
                                         :href="activeProject().liveUrl"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        class="px-6 py-3 rounded-xl font-semibold text-white border-2 border-white/20 hover:border-accent-400 transition-all duration-300 hover:bg-white/5 flex items-center gap-2"
+                                        class="group px-6 py-3 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 flex items-center gap-2 relative overflow-hidden"
+                                        style="background: linear-gradient(135deg, var(--color-primary-500), var(--color-accent-600));"
                                     >
-                                        <Icon
-                                            icon="solar:link-bold"
-                                            class="text-lg"
-                                        />
-                                        <span>Live Demo</span>
+                                        <Icon icon="solar:link-bold" class="text-lg relative z-10" />
+                                        <span class="relative z-10">Live Demo</span>
+                                        <span class="absolute inset-0 bg-gradient-to-r from-primary-600 to-accent-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                                     </a>
                                 </div>
 

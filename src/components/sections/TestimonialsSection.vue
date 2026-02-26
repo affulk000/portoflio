@@ -139,11 +139,12 @@ useModernScrollAnimation(testimonialsRef, {
             <div class="text-center mt-16">
                 <button
                     @click="isTestimonialModalOpen = true"
-                    class="px-8 py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
+                    class="group px-8 py-4 rounded-xl font-semibold text-white transition-all duration-300 hover:scale-105 hover:shadow-glow-accent flex items-center gap-3 mx-auto relative overflow-hidden"
+                    style="background: linear-gradient(135deg, var(--color-orange-500), var(--color-accent-600));"
                 >
-                    <Icon icon="solar:star-bold" class="text-lg" />
-                    <span>Share Your Experience</span>
-                    <Icon icon="solar:add-circle-bold" class="text-lg" />
+                    <span class="relative z-10">Share Your Experience</span>
+                    <Icon icon="solar:add-circle-bold" class="text-lg relative z-10 transition-transform duration-300 group-hover:scale-110" />
+                    <span class="absolute inset-0 bg-gradient-to-r from-orange-600 to-accent-700 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></span>
                 </button>
             </div>
         </div>
