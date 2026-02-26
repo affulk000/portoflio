@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { ref, onMounted, onUnmounted, computed } from "vue";
 import { Icon } from "@iconify/vue";
+import { motion, AnimatePresence } from "motion-v";
 import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
 import { testimonials } from "@data/testimonials";
 import TestimonialModal from "@/components/ui/TestimonialModal.vue";
@@ -14,7 +15,7 @@ const isTestimonialModalOpen = ref(false);
 const activeIndex = ref(0);
 let timeoutId: number | null = null;
 
-const currentTestimonial = computed(() => testimonials[activeIndex.value]);
+const currentTestimonial = computed(() => testimonials[activeIndex.value] || testimonials[0]);
 
 const startTimer = () => {
     timeoutId = window.setTimeout(() => {
@@ -68,16 +69,32 @@ useModernScrollAnimation(testimonialsRef, {
 
             <div class="flex flex-col items-center max-w-5xl mx-auto">
                 <div class="min-h-[120px] w-full mb-8">
-                    <Transition name="fade" mode="out-in">
-                        <blockquote :key="activeIndex" class="text-center text-2xl md:text-4xl font-semibold text-white leading-tight">
+                    <AnimatePresence mode="wait">
+                        <motion.blockquote
+                            v-if="currentTestimonial"
+                            :key="activeIndex"
+                            :initial="{ opacity: 0, y: 30 }"
+                            :animate="{ opacity: 1, y: 0 }"
+                            :exit="{ opacity: 0, y: -30 }"
+                            :transition="{ type: 'spring', duration: 0.5 }"
+                            class="text-center text-2xl md:text-4xl font-semibold text-white leading-tight"
+                        >
                             "{{ currentTestimonial.content }}"
-                        </blockquote>
-                    </Transition>
+                        </motion.blockquote>
+                    </AnimatePresence>
                 </div>
 
                 <div class="flex items-center justify-center gap-8 pt-8">
-                    <Transition name="blur" mode="out-in">
-                        <div :key="`author-${activeIndex}`" class="flex items-center gap-4">
+                    <AnimatePresence mode="wait">
+                        <motion.div
+                            v-if="currentTestimonial"
+                            :key="`author-${activeIndex}`"
+                            :initial="{ opacity: 0, filter: 'blur(8px)' }"
+                            :animate="{ opacity: 1, filter: 'blur(0px)' }"
+                            :exit="{ opacity: 0, filter: 'blur(8px)' }"
+                            :transition="{ type: 'spring', duration: 0.5 }"
+                            class="flex items-center gap-4"
+                        >
                             <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-primary-600 flex items-center justify-center">
                                 <span class="text-white font-bold text-lg">{{ currentTestimonial.name.charAt(0) }}</span>
                             </div>
@@ -86,25 +103,34 @@ useModernScrollAnimation(testimonialsRef, {
                                 <div class="text-lg font-medium text-white italic">{{ currentTestimonial.name }}</div>
                                 <div class="text-base text-gray-400">{{ currentTestimonial.role }} at {{ currentTestimonial.company }}</div>
                             </div>
-                        </div>
-                    </Transition>
+                        </motion.div>
+                    </AnimatePresence>
                 </div>
 
                 <div class="flex justify-center gap-3 mt-8">
-                    <span
+                    <motion.span
                         v-for="(testimonial, i) in testimonials"
                         :key="`indicator-${testimonial.uuid}`"
-                        class="relative overflow-hidden bg-white/10 transition-all duration-300"
-                        :style="{
-                            width: i === activeIndex ? `${BAR_WIDTH}px` : `${CIRCLE_SIZE}px`,
-                            height: `${CIRCLE_SIZE}px`,
-                            borderRadius: i === activeIndex ? '8px' : '999px'
+                        :animate="{
+                            width: i === activeIndex ? BAR_WIDTH : CIRCLE_SIZE,
+                            height: CIRCLE_SIZE,
+                            borderRadius: i === activeIndex ? 8 : 999
                         }"
+                        :transition="{ type: 'spring', stiffness: 300, damping: 30 }"
+                        class="relative overflow-hidden bg-white/10"
                     >
-                        <Transition name="progress">
-                            <div v-if="i === activeIndex" :key="`progress-${activeIndex}`" class="absolute top-0 left-0 h-full rounded-lg bg-accent-400 progress-bar" />
-                        </Transition>
-                    </span>
+                        <AnimatePresence>
+                            <motion.div
+                                v-if="i === activeIndex"
+                                :key="`progress-${activeIndex}`"
+                                :initial="{ width: 0 }"
+                                :animate="{ width: '100%' }"
+                                :exit="{ width: 0 }"
+                                :transition="{ duration: DURATION / 1000, ease: 'linear' }"
+                                class="absolute top-0 left-0 h-full rounded-lg bg-accent-400"
+                            />
+                        </AnimatePresence>
+                    </motion.span>
                 </div>
             </div>
 
@@ -123,16 +149,3 @@ useModernScrollAnimation(testimonialsRef, {
 
     <TestimonialModal :is-open="isTestimonialModalOpen" @close="isTestimonialModalOpen = false" />
 </template>
-
-<style scoped>
-.fade-enter-active, .fade-leave-active { transition: all 0.5s ease; }
-.fade-enter-from { opacity: 0; transform: translateY(30px); }
-.fade-leave-to { opacity: 0; transform: translateY(-30px); }
-
-.blur-enter-active, .blur-leave-active { transition: all 0.5s ease; }
-.blur-enter-from { opacity: 0; filter: blur(8px); }
-.blur-leave-to { opacity: 0; filter: blur(8px); }
-
-.progress-bar { animation: fillBar 5s linear; }
-@keyframes fillBar { from { width: 0; } to { width: 100%; } }
-</style>
