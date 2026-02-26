@@ -19,7 +19,7 @@ useModernScrollAnimation(heroSectionRef, {
 // Staggered animations for stats
 useStaggeredAnimation(statsElementsRef, {
     staggerDelay: 150,
-    animationType: 'fadeUp',
+    animationType: "fadeUp",
     threshold: 0.2,
 });
 
@@ -112,7 +112,7 @@ const socialLinks = [
     {
         name: "LinkedIn",
         icon: "mdi:linkedin",
-        url: "#",
+        url: "www.linkedin.com/in/emmanuel-afful-74336517b",
         color: "hover:text-blue-400",
     },
     {
@@ -561,7 +561,11 @@ onMounted(() => {
                 <div
                     v-for="(stat, index) in stats"
                     :key="stat.label"
-                    :ref="el => { if (el) statsElementsRef[index] = el as HTMLElement }"
+                    :ref="
+                        (el) => {
+                            if (el) statsElementsRef[index] = el as HTMLElement;
+                        }
+                    "
                     class="glass-morphism-dark p-6 rounded-xl border border-white/10 text-center transition-all duration-300 hover:border-accent-500/30 hover:scale-105 hover:shadow-glow-accent group"
                 >
                     <Icon
@@ -604,7 +608,8 @@ onMounted(() => {
 <style scoped>
 /* Enhanced Animations */
 @keyframes float {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0px) rotate(0deg);
     }
     33% {
@@ -616,7 +621,8 @@ onMounted(() => {
 }
 
 @keyframes float-delayed {
-    0%, 100% {
+    0%,
+    100% {
         transform: translateY(0px) rotate(0deg) scale(1);
     }
     25% {
@@ -628,7 +634,8 @@ onMounted(() => {
 }
 
 @keyframes pulse-slow {
-    0%, 100% {
+    0%,
+    100% {
         opacity: 0.3;
         transform: translate(-50%, -50%) scale(1);
     }
@@ -648,16 +655,19 @@ onMounted(() => {
 }
 
 @keyframes blink {
-    0%, 50% {
+    0%,
+    50% {
         opacity: 1;
     }
-    51%, 100% {
+    51%,
+    100% {
         opacity: 0;
     }
 }
 
 @keyframes fadeInDelayed {
-    0%, 80% {
+    0%,
+    80% {
         opacity: 0;
     }
     100% {
