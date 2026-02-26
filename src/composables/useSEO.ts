@@ -12,7 +12,8 @@ interface SEOOptions {
 }
 
 export const useSEO = (options: SEOOptions = {}) => {
-    const baseUrl = import.meta.env.VITE_BASE_URL || 'http://localhost:5173';
+    const baseUrl =
+        import.meta.env.VITE_BASE_URL || "https://www.peridev.org";
     const siteName = "Emmanuel Afful - Backend Engineer";
 
     const defaultTitle =
@@ -88,3 +89,5 @@ export const useSEO = (options: SEOOptions = {}) => {
             : [],
     });
 };
+
+export default getBaseUrl;
