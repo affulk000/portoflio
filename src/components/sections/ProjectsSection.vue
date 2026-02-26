@@ -1,8 +1,7 @@
 <script setup lang="ts">
 import { ref, computed } from "vue";
 import { Icon } from "@iconify/vue";
-import { motion } from "motion-v";
-import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
+import { motion, AnimatePresence } from "motion-v";
 import { projects as projectsData, type Project as DataProject } from "@/data/projects";
 
 interface Project {
@@ -84,13 +83,6 @@ const projects = computed<Project[]>(() => {
 const activeProjectIndex = ref(0);
 const projectsSectionRef = ref<HTMLElement | null>(null);
 
-// Modern scroll animation with fade out
-useModernScrollAnimation(projectsSectionRef, {
-    parallaxSpeed: 0.15,
-    enableParallax: true,
-    enableFade: true,
-});
-
 const getColorClasses = (color: string) => {
     const colors = {
         accent: {
@@ -166,9 +158,13 @@ const prevProject = () => {
 </script>
 
 <template>
-    <section
+    <motion.section
         ref="projectsSectionRef"
         id="project"
+        :initial="{ opacity: 0, y: 50 }"
+        :whileInView="{ opacity: 1, y: 0 }"
+        :transition="{ duration: 0.6 }"
+        :viewport="{ once: true, amount: 0.2 }"
         class="relative overflow-hidden py-24 lg:py-32"
     >
         <!-- Background Decoration -->
@@ -293,11 +289,12 @@ const prevProject = () => {
 
                     <!-- Right: Active Project Details -->
                     <div class="relative min-h-[600px]">
-                        <transition name="fade-slide" mode="out-in">
+                        <AnimatePresence mode="wait">
                             <motion.div
                                 :key="activeProjectIndex"
                                 :initial="{ opacity: 0, y: 16, scale: 0.98 }"
                                 :animate="{ opacity: 1, y: 0, scale: 1 }"
+                                :exit="{ opacity: 0, y: -16, scale: 0.98 }"
                                 :transition="{ duration: 0.35, ease: 'easeOut' }"
                                 class="glass-morphism p-8 lg:p-10 rounded-2xl border border-white/10 space-y-6"
                             >
@@ -540,27 +537,10 @@ const prevProject = () => {
                                     </button>
                                 </div>
                             </motion.div>
-                        </transition>
+                        </AnimatePresence>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </motion.section>
 </template>
-
-<style scoped>
-.fade-slide-enter-active,
-.fade-slide-leave-active {
-    transition: all 0.4s ease;
-}
-
-.fade-slide-enter-from {
-    opacity: 0;
-    transform: translateX(30px);
-}
-
-.fade-slide-leave-to {
-    opacity: 0;
-    transform: translateX(-30px);
-}
-</style>
