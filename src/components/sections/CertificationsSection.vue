@@ -13,6 +13,14 @@ import { certifications } from "@data/certification";
         :viewport="{ once: true, amount: 0.2 }"
         class="relative min-h-screen flex items-center justify-center overflow-hidden py-24 lg:py-32"
     >
+        <!-- Noise Texture -->
+        <div class="absolute inset-0 opacity-50" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px" />
+        <div class="absolute inset-0 opacity-50 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px" />
+        
+        <!-- Glass Blur Blobs -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/3 left-1/3 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 bg-orange-400 dark:bg-orange-500" style="animation: float 20s ease-in-out infinite" />
+        </div>
         <div class="container-custom w-full">
             <!-- Section Header -->
             <motion.div

@@ -79,9 +79,14 @@ const getColorClasses = (color: string) => {
         :viewport="{ once: true, amount: 0.2 }"
         class="relative py-24 lg:py-32 overflow-hidden"
     >
-        <div class="absolute inset-0 opacity-10 pointer-events-none">
-            <div class="absolute top-20 right-20 w-96 h-96 rounded-full blur-3xl animate-float" style="background: radial-gradient(circle, var(--color-primary-500), transparent);"></div>
-            <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl animate-float-delayed" style="background: radial-gradient(circle, var(--color-accent-500), transparent);"></div>
+        <!-- Noise Texture -->
+        <div class="absolute inset-0 opacity-50" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px" />
+        <div class="absolute inset-0 opacity-50 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px" />
+        
+        <!-- Glass Blur Blobs -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-20 right-20 w-96 h-96 rounded-full blur-3xl opacity-20 bg-primary-400 dark:bg-primary-500" style="animation: float 20s ease-in-out infinite" />
+            <div class="absolute bottom-20 left-20 w-96 h-96 rounded-full blur-3xl opacity-20 bg-accent-400 dark:bg-accent-500" style="animation: float 20s ease-in-out infinite 2s" />
         </div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
@@ -216,17 +221,8 @@ const getColorClasses = (color: string) => {
 
 <style scoped>
 @keyframes float {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    33% { transform: translateY(-20px) rotate(1deg); }
-    66% { transform: translateY(10px) rotate(-1deg); }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
 }
-
-@keyframes float-delayed {
-    0%, 100% { transform: translateY(0px) rotate(0deg) scale(1); }
-    25% { transform: translateY(15px) rotate(-0.5deg) scale(1.05); }
-    75% { transform: translateY(-10px) rotate(0.5deg) scale(0.95); }
-}
-
-.animate-float { animation: float 8s ease-in-out infinite; }
-.animate-float-delayed { animation: float-delayed 10s ease-in-out infinite; animation-delay: 2s; }
 </style>

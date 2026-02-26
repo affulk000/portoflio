@@ -155,61 +155,14 @@ onMounted(() => {
         :transition="{ duration: 0.8 }"
         class="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-        <!-- Enhanced Animated Background Elements -->
-        <div
-            class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden"
-            ref="el => { if (el) backgroundElementsRef[0] = el as HTMLElement }"
-        >
-            <!-- Floating Gradient Orbs with Enhanced Animation -->
-            <div
-                class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-float"
-                style="
-                    background: radial-gradient(
-                        circle,
-                        var(--color-accent-500),
-                        transparent
-                    );
-                "
-            ></div>
-            <div
-                class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl animate-float-delayed"
-                style="
-                    background: radial-gradient(
-                        circle,
-                        var(--color-primary-500),
-                        transparent
-                    );
-                "
-            ></div>
-            <div
-                class="absolute top-1/2 left-1/2 w-64 h-64 rounded-full blur-2xl animate-pulse-slow"
-                style="
-                    background: radial-gradient(
-                        circle,
-                        var(--color-orange-500),
-                        transparent
-                    );
-                    transform: translate(-50%, -50%);
-                "
-            ></div>
-
-            <!-- Animated Grid Pattern -->
-            <div
-                class="absolute inset-0 opacity-10 animate-grid-move"
-                style="
-                    background-image:
-                        linear-gradient(
-                            var(--color-primary-500) 1px,
-                            transparent 1px
-                        ),
-                        linear-gradient(
-                            90deg,
-                            var(--color-primary-500) 1px,
-                            transparent 1px
-                        );
-                    background-size: 50px 50px;
-                "
-            ></div>
+        <!-- Noise Texture -->
+        <div class="absolute inset-0 opacity-50" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px" />
+        <div class="absolute inset-0 opacity-50 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px" />
+        
+        <!-- Glass Blur Blobs -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20 bg-accent-400 dark:bg-accent-500" style="animation: float 20s ease-in-out infinite" />
+            <div class="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] rounded-full blur-3xl opacity-20 bg-primary-400 dark:bg-primary-500" style="animation: float 20s ease-in-out infinite 2s" />
         </div>
 
         <div class="max-w-7xl mx-auto px-6 lg:px-8 py-20 relative z-10">
@@ -592,52 +545,10 @@ onMounted(() => {
 </template>
 
 <style scoped>
-/* Enhanced Animations */
 @keyframes float {
-    0%,
-    100% {
-        transform: translateY(0px) rotate(0deg);
-    }
-    33% {
-        transform: translateY(-20px) rotate(1deg);
-    }
-    66% {
-        transform: translateY(10px) rotate(-1deg);
-    }
-}
-
-@keyframes float-delayed {
-    0%,
-    100% {
-        transform: translateY(0px) rotate(0deg) scale(1);
-    }
-    25% {
-        transform: translateY(15px) rotate(-0.5deg) scale(1.05);
-    }
-    75% {
-        transform: translateY(-10px) rotate(0.5deg) scale(0.95);
-    }
-}
-
-@keyframes pulse-slow {
-    0%,
-    100% {
-        opacity: 0.3;
-        transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-        opacity: 0.6;
-        transform: translate(-50%, -50%) scale(1.1);
-    }
-}
-
-@keyframes grid-move {
-    0% {
-        background-position: 0 0;
-    }
-    100% {
-        background-position: 50px 50px;
-    }
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(30px, -30px) scale(1.1); }
+    66% { transform: translate(-20px, 20px) scale(0.9); }
 }
 
 @keyframes blink {
@@ -661,51 +572,7 @@ onMounted(() => {
     }
 }
 
-/* Animation Classes */
-.animate-float {
-    animation: float 8s ease-in-out infinite;
-}
-
-.animate-float-delayed {
-    animation: float-delayed 10s ease-in-out infinite;
-    animation-delay: 2s;
-}
-
-.animate-pulse-slow {
-    animation: pulse-slow 6s ease-in-out infinite;
-}
-
-.animate-grid-move {
-    animation: grid-move 20s linear infinite;
-}
-
 .animate-blink {
     animation: blink 1s infinite;
-}
-
-.animate-fade-in-delayed {
-    animation: fadeInDelayed 2s ease-out forwards;
-}
-
-/* Interactive Hover Effects */
-.group:hover .group-hover\:scale-110 {
-    transform: scale(1.1);
-}
-
-/* Smooth transitions for all interactive elements */
-.transition-all {
-    transition-property: all;
-    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* Enhanced glass morphism with better backdrop effects */
-.glass-morphism {
-    backdrop-filter: blur(20px) saturate(180%);
-    -webkit-backdrop-filter: blur(20px) saturate(180%);
-}
-
-.glass-morphism-dark {
-    backdrop-filter: blur(16px) saturate(150%);
-    -webkit-backdrop-filter: blur(16px) saturate(150%);
 }
 </style>
