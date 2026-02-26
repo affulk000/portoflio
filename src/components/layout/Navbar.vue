@@ -90,14 +90,14 @@ onUnmounted(() => {
 
                 <!-- Desktop Navigation - Centered -->
                 <div
-                    class="hidden lg:flex items-center gap-0 absolute left-1/2 -translate-x-1/2"
+                    class="hidden lg:flex items-center gap-2 absolute left-1/2 -translate-x-1/2"
                 >
                     <a
                         v-for="link in navLinks"
                         :key="link.name"
                         :href="link.href"
                         @click.prevent="scrollToSection(link.href)"
-                        class="group relative px-1.5 py-2 rounded-lg text-[15px] font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1"
+                        class="group relative px-3 py-2 rounded-lg text-[15px] font-medium text-gray-300 hover:text-white transition-all duration-300 flex items-center gap-1.5"
                     >
                         <Icon
                             :icon="link.icon"
