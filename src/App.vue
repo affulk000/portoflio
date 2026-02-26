@@ -83,7 +83,19 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
-    <!-- App content goes here -->
+  <div v-if="!isLoading">
+    <ScrollProgress />
+    <NavBar />
+    <main>
+      <HeroSection />
+      <AboutSection />
+      <ExperienceSection />
+      <ProjectsSection />
+      <SkillsSection />
+      <CertificationsSection />
+      <TestimonialsSection />
+      <BlogSection />
+    </main>
+    <Footer />
   </div>
 </template>
