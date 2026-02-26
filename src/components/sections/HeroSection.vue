@@ -327,6 +327,7 @@ onMounted(() => {
                             href="/Emmanuel-Afful-Backend-CV.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
+                            download
                             class="px-8 py-4 rounded-xl font-semibold text-white border-2 border-accent-500/40 hover:border-accent-400 transition-all duration-300 hover:bg-accent-500/10 flex items-center gap-3"
                         >
                             <Icon icon="solar:download-minimalistic-bold" class="text-lg" />

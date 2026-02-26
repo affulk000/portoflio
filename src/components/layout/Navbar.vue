@@ -123,9 +123,20 @@ onUnmounted(() => {
                         <Icon icon="mdi:github" class="text-lg" />
                     </a>
                     <a
+                        href="https://www.linkedin.com/in/emmanuel-afful-74336517b"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
+                        title="View LinkedIn profile"
+                        aria-label="LinkedIn profile"
+                    >
+                        <Icon icon="mdi:linkedin" class="text-lg" />
+                    </a>
+                    <a
                         href="/Emmanuel-Afful-Backend-CV.pdf"
                         target="_blank"
                         rel="noopener noreferrer"
+                        download
                         class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
                         title="Download CV"
                         aria-label="Download CV"
@@ -223,6 +234,23 @@ onUnmounted(() => {
                         >
                             <Icon icon="mdi:github" class="text-xl" />
                             <span>GitHub</span>
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/emmanuel-afful-74336517b"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-2 px-4 py-3.5 rounded-xl border border-white/15 text-white font-semibold transition-all duration-300 flex items-center gap-3 justify-center active:scale-95"
+                        >
+                            <Icon icon="mdi:linkedin" class="text-xl" />
+                            <span>LinkedIn</span>
+                        </a>
+                        <a
+                            href="/Emmanuel-Afful-Backend-CV.pdf"
+                            download
+                            class="mt-2 px-4 py-3.5 rounded-xl border border-accent-500/40 text-white font-semibold transition-all duration-300 flex items-center gap-3 justify-center active:scale-95"
+                        >
+                            <Icon icon="solar:download-minimalistic-bold" class="text-xl" />
+                            <span>Download CV</span>
                         </a>
                     </div>
                 </div>

@@ -129,6 +129,7 @@ const scrollToTop = () => {
                             href="/Emmanuel-Afful-Backend-CV.pdf"
                             target="_blank"
                             rel="noopener noreferrer"
+                            download
                             class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600 dark:hover:text-accent-400 light:hover:text-primary-600 transition-colors"
                         >
                             <Icon icon="solar:download-minimalistic-bold" class="text-lg" />
