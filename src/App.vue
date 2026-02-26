@@ -12,6 +12,7 @@ import CertificationsSection from "@/components/sections/CertificationsSection.v
 import ScrollProgress from "@/components/layout/ScrollProgress.vue";
 import NavBar from "@/components/layout/Navbar.vue";
 import Footer from "@/components/layout/Footer.vue";
+import LiquidGlassBackground from "@/components/ui/LiquidGlassBackground.vue";
 
 const _unusedComponents = {
     HeroSection,
@@ -83,6 +84,7 @@ onMounted(() => {
 </script>
 
 <template>
+  <LiquidGlassBackground />
   <div v-if="!isLoading">
     <ScrollProgress />
     <NavBar />
