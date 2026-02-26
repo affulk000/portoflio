@@ -1,7 +1,9 @@
 <script setup lang="ts">
 import { Icon } from "@iconify/vue";
+import { useGenerateCV } from "@composables/useGenerateCV";
 
 const currentYear = new Date().getFullYear();
+const { generateCV } = useGenerateCV();
 
 const socialLinks = [
     {
@@ -129,14 +131,13 @@ const scrollToTop = () => {
                             <Icon icon="solar:map-point-bold" class="text-lg" />
                             <span>Accra, Ghana</span>
                         </div>
-                        <a
-                            href="/cv.pdf"
-                            download
-                            class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600 dark:hover:text-accent-400 light:hover:text-primary-600 transition-colors"
+                        <button
+                            @click="generateCV"
+                            class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600 dark:hover:text-accent-400 light:hover:text-primary-600 transition-colors cursor-pointer"
                         >
                             <Icon icon="solar:download-bold" class="text-lg" />
                             <span>Download CV</span>
-                        </a>
+                        </button>
                     </div>
                     <div class="flex items-center gap-4 pt-2">
                         <a

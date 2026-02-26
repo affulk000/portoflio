@@ -3,11 +3,13 @@ import { ref, onMounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
 import { useStaggeredAnimation } from "@composables/useStaggeredAnimation";
+import { useGenerateCV } from "@composables/useGenerateCV";
 import ContactModal from "@/components/ui/ContactModal.vue";
 
 const heroSectionRef = ref<HTMLElement | null>(null);
 const isContactModalOpen = ref(false);
 const statsElementsRef = ref<HTMLElement[]>([]);
+const { generateCV } = useGenerateCV();
 
 // Modern scroll animations
 useModernScrollAnimation(heroSectionRef, {
@@ -166,7 +168,7 @@ onMounted(() => {
     <section
         ref="heroSectionRef"
         id="hero"
-        class="relative h-screen flex items-center justify-center overflow-hidden pt-48"
+        class="relative h-screen flex items-center justify-center overflow-hidden pt-32"
         style="
             background: linear-gradient(
                 180deg,
@@ -348,14 +350,13 @@ onMounted(() => {
                             <span>Contact Me</span>
                         </button>
 
-                        <a
-                            href="/cv.pdf"
-                            download
+                        <button
+                            @click="generateCV"
                             class="px-8 py-4 rounded-xl font-semibold text-white border-2 border-white/20 hover:border-primary-400 transition-all duration-300 hover:bg-white/5 flex items-center gap-3"
                         >
                             <Icon icon="solar:download-bold" class="text-lg" />
                             <span>Download CV</span>
-                        </a>
+                        </button>
                     </div>
 
                     <!-- Social Links -->
