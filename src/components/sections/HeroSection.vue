@@ -112,7 +112,7 @@ const socialLinks = [
     {
         name: "LinkedIn",
         icon: "mdi:linkedin",
-        url: "www.linkedin.com/in/emmanuel-afful-74336517b",
+        url: "https://www.linkedin.com/in/emmanuel-afful-74336517b",
         color: "hover:text-blue-400",
     },
     {
@@ -347,6 +347,15 @@ onMounted(() => {
                             <Icon icon="solar:letter-bold" class="text-lg" />
                             <span>Contact Me</span>
                         </button>
+
+                        <a
+                            href="/cv.pdf"
+                            download
+                            class="px-8 py-4 rounded-xl font-semibold text-white border-2 border-white/20 hover:border-primary-400 transition-all duration-300 hover:bg-white/5 flex items-center gap-3"
+                        >
+                            <Icon icon="solar:download-bold" class="text-lg" />
+                            <span>Download CV</span>
+                        </a>
                     </div>
 
                     <!-- Social Links -->
