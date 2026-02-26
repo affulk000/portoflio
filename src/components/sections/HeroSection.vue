@@ -73,28 +73,6 @@ const typeWriter = () => {
     setTimeout(typeWriter, typingSpeed.value);
 };
 
-onMounted(() => {
-    // Wait for loading screen (800ms) + buffer time
-    const loadingDelay = 1200;
-
-    setTimeout(() => {
-        leftContentVisible.value = true;
-    }, loadingDelay);
-
-    setTimeout(() => {
-        rightContentVisible.value = true;
-    }, loadingDelay + 400);
-
-    setTimeout(() => {
-        statsVisible.value = true;
-    }, loadingDelay + 800);
-
-    setTimeout(() => {
-        typingStarted.value = true;
-        typeWriter();
-    }, loadingDelay + 500);
-});
-
 const scrollToSection = (sectionId: string) => {
     const element = document.querySelector(sectionId);
     if (element) {
@@ -112,7 +90,7 @@ const socialLinks = [
     {
         name: "LinkedIn",
         icon: "mdi:linkedin",
-        url: "#",
+        url: "https://linkedin.com/in/emmanuel-afful-6ba505260",
         color: "hover:text-blue-400",
     },
     {
@@ -177,10 +155,7 @@ onMounted(() => {
         "
     >
         <!-- Enhanced Animated Background Elements -->
-        <div
-            class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden"
-            ref="el => { if (el) backgroundElementsRef[0] = el as HTMLElement }"
-        >
+        <div class="absolute inset-0 opacity-20 pointer-events-none overflow-hidden">
             <!-- Floating Gradient Orbs with Enhanced Animation -->
             <div
                 class="absolute top-1/4 left-1/4 w-96 h-96 rounded-full blur-3xl animate-float"
@@ -347,6 +322,16 @@ onMounted(() => {
                             <Icon icon="solar:letter-bold" class="text-lg" />
                             <span>Contact Me</span>
                         </button>
+
+                        <a
+                            href="/Emmanuel-Afful-Backend-CV.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="px-8 py-4 rounded-xl font-semibold text-white border-2 border-accent-500/40 hover:border-accent-400 transition-all duration-300 hover:bg-accent-500/10 flex items-center gap-3"
+                        >
+                            <Icon icon="solar:download-minimalistic-bold" class="text-lg" />
+                            <span>Download CV</span>
+                        </a>
                     </div>
 
                     <!-- Social Links -->

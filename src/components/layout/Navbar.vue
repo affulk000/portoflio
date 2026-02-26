@@ -112,6 +112,26 @@ onUnmounted(() => {
 
                 <!-- Theme Toggle & Contact Button (Desktop) -->
                 <div class="hidden lg:flex items-center gap-3">
+                    <a
+                        href="https://github.com/affulk000"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
+                        title="View GitHub profile"
+                        aria-label="GitHub profile"
+                    >
+                        <Icon icon="mdi:github" class="text-lg" />
+                    </a>
+                    <a
+                        href="/Emmanuel-Afful-Backend-CV.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
+                        title="Download CV"
+                        aria-label="Download CV"
+                    >
+                        <Icon icon="solar:download-minimalistic-bold" class="text-lg" />
+                    </a>
                     <button
                         @click="toggleTheme"
                         class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
@@ -195,6 +215,15 @@ onUnmounted(() => {
                             <Icon icon="solar:letter-bold" class="text-xl" />
                             <span>Contact</span>
                         </button>
+                        <a
+                            href="https://github.com/affulk000"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="mt-2 px-4 py-3.5 rounded-xl border border-white/15 text-white font-semibold transition-all duration-300 flex items-center gap-3 justify-center active:scale-95"
+                        >
+                            <Icon icon="mdi:github" class="text-xl" />
+                            <span>GitHub</span>
+                        </a>
                     </div>
                 </div>
             </div>

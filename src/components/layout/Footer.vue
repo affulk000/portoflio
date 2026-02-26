@@ -12,7 +12,7 @@ const socialLinks = [
     {
         name: "LinkedIn",
         icon: "mdi:linkedin",
-        url: "#",
+        url: "https://linkedin.com/in/emmanuel-afful-6ba505260",
     },
     {
         name: "Email",
@@ -125,6 +125,15 @@ const scrollToTop = () => {
                             <Icon icon="solar:map-point-bold" class="text-lg" />
                             <span>Accra, Ghana</span>
                         </div>
+                        <a
+                            href="/Emmanuel-Afful-Backend-CV.pdf"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="flex items-center gap-2 text-sm dark:text-gray-400 light:text-gray-600 dark:hover:text-accent-400 light:hover:text-primary-600 transition-colors"
+                        >
+                            <Icon icon="solar:download-minimalistic-bold" class="text-lg" />
+                            <span>Download CV</span>
+                        </a>
                     </div>
                     <div class="flex items-center gap-4 pt-2">
                         <a

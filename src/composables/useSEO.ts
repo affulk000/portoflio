@@ -11,8 +11,11 @@ interface SEOOptions {
     structuredData?: Record<string, any>;
 }
 
+const getBaseUrl = (): string =>
+    import.meta.env.VITE_BASE_URL || "https://www.peridev.org";
+
 export const useSEO = (options: SEOOptions = {}) => {
-    const baseUrl = import.meta.env.VITE_BASE_URL || 'http://localhost:5173';
+    const baseUrl = getBaseUrl();
     const siteName = "Emmanuel Afful - Backend Engineer";
 
     const defaultTitle =

@@ -13,17 +13,34 @@ import ScrollProgress from "@/components/layout/ScrollProgress.vue";
 import NavBar from "@/components/layout/Navbar.vue";
 import Footer from "@/components/layout/Footer.vue";
 
+const _unusedComponents = {
+    HeroSection,
+    AboutSection,
+    ProjectsSection,
+    ExperienceSection,
+    SkillsSection,
+    TestimonialsSection,
+    BlogSection,
+    CertificationsSection,
+    ScrollProgress,
+    NavBar,
+    Footer,
+};
+void _unusedComponents;
+
 // Default SEO for homepage
+const baseUrl = import.meta.env.VITE_BASE_URL || "https://www.peridev.org";
+
 useSEO({
     structuredData: {
         "@context": "https://schema.org",
         "@type": "Person",
         name: "Emmanuel Afful",
-        url: "http://localhost:5173",
+        url: baseUrl,
         jobTitle: "System Software Engineer",
         description:
             "Backend Engineer specializing in Go, PostgreSQL, and multi-tenant SaaS architecture",
-        image: "http://localhost:5173/og-image.svg",
+        image: `${baseUrl}/og-image.svg`,
         alumniOf: {
             "@type": "Organization",
             name: "Ghana Communication Technology University",
@@ -38,8 +55,10 @@ useSEO({
             addressCountry: "Ghana",
         },
         sameAs: [
+            "https://www.peridev.org/",
+            "https://afful-portfolio.deno.dev/",
             "https://github.com/affulk000",
-            "http://linkedin.com/in/emmanuel-afful-6ba505260", // Update
+            "https://linkedin.com/in/emmanuel-afful-6ba505260",
             "https://twitter.com/affulk000", // Update if applicable
         ],
         knowsAbout: [

@@ -99,6 +99,26 @@ export const projects: readonly Project[] = [
             "Designed fault-tolerant microservices architecture",
             "Implemented comprehensive API documentation"
         ]
+    },
+    {
+        uuid: "proj-open-source-cli-2024",
+        title: "GoOps CLI - Open Source DevOps Toolkit",
+        description: "Open-source Go CLI for deployment checks, DB migrations, and release automation used across multiple backend services.",
+        longDescription: "Built and maintained a production-focused CLI toolkit in Go to standardize release workflows across services. The tool validates environment configuration, runs safe database migrations, and performs health checks before and after deployments. It reduced manual deploy errors and made incident response faster with repeatable commands.",
+        technologies: ["Go", "Cobra", "PostgreSQL", "Docker", "GitHub Actions", "Linux"],
+        category: "devops",
+        status: "completed",
+        featured: true,
+        githubUrl: "https://github.com/affulk000",
+        startDate: "2024-05-01",
+        endDate: "2024-10-31",
+        highlights: [
+            "Cut release checklist time from 35 minutes to under 10 minutes",
+            "Reduced manual deployment errors by 70%",
+            "Added migration safety checks and rollback helpers",
+            "Integrated CLI checks into CI/CD pipelines",
+            "Documented commands for fast onboarding"
+        ]
     }
 ];
 
