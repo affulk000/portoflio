@@ -90,7 +90,7 @@ onUnmounted(() => {
 
                 <!-- Desktop Navigation - Centered -->
                 <div
-                    class="hidden lg:flex items-center gap-2 absolute left-1/2 -translate-x-1/2"
+                    class="hidden lg:flex items-center gap-2 flex-1 justify-center"
                 >
                     <a
                         v-for="link in navLinks"
@@ -111,7 +111,7 @@ onUnmounted(() => {
                 </div>
 
                 <!-- Theme Toggle & Contact Button (Desktop) -->
-                <div class="hidden lg:flex items-center gap-3">
+                <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
                     <button
                         @click="toggleTheme"
                         class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
