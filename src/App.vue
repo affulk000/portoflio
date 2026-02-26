@@ -94,9 +94,9 @@ onMounted(() => {
       <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />
-      <CertificationsSection />
       <TestimonialsSection />
       <BlogSection />
+      <CertificationsSection />
     </main>
     <Footer />
   </div>

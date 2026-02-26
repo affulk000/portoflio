@@ -1,12 +1,33 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 import { Icon } from "@iconify/vue";
 import { useModernScrollAnimation } from "@composables/useModernScrollAnimation";
 import { testimonials } from "@data/testimonials";
 import TestimonialModal from "@/components/ui/TestimonialModal.vue";
 
+const DURATION = 5000;
+const BAR_WIDTH = 50;
+const CIRCLE_SIZE = 12;
+
 const testimonialsRef = ref<HTMLElement | null>(null);
 const isTestimonialModalOpen = ref(false);
+const activeIndex = ref(0);
+let timeoutId: number | null = null;
+
+const startTimer = () => {
+    timeoutId = window.setTimeout(() => {
+        activeIndex.value = (activeIndex.value + 1) % testimonials.length;
+        startTimer();
+    }, DURATION);
+};
+
+onMounted(() => {
+    startTimer();
+});
+
+onUnmounted(() => {
+    if (timeoutId) clearTimeout(timeoutId);
+});
 
 useModernScrollAnimation(testimonialsRef, {
     parallaxSpeed: 0.2,
@@ -55,49 +76,74 @@ useModernScrollAnimation(testimonialsRef, {
                 </p>
             </div>
 
-            <!-- Testimonials Grid -->
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <div
-                    v-for="(testimonial, _index) in testimonials.slice(0, 6)"
-                    :key="testimonial.uuid"
-                    class="glass-morphism-dark p-6 rounded-xl border border-white/10 hover:border-accent-500/30 transition-all duration-300 group hover:scale-105"
-                >
-                    <!-- Rating -->
-                    <div class="flex items-center gap-1 mb-4">
-                        <Icon
-                            v-for="star in testimonial.rating"
-                            :key="star"
-                            icon="solar:star-bold"
-                            class="text-lg text-yellow-400"
-                        />
-                    </div>
+            <!-- Testimonial Slider -->
+            <div class="flex flex-col items-center max-w-5xl mx-auto">
+                <!-- Quote -->
+                <div class="min-h-[120px] w-full mb-8">
+                    <motion.blockquote
+                        :key="activeIndex"
+                        :initial="{ opacity: 0, y: 30 }"
+                        :animate="{ opacity: 1, y: 0 }"
+                        :exit="{ opacity: 0, y: -30 }"
+                        :transition="{ type: 'spring', duration: 0.5 }"
+                        class="text-center text-2xl md:text-4xl font-semibold text-white leading-tight"
+                    >
+                        "{{ testimonials[activeIndex].content }}"
+                    </motion.blockquote>
+                </div>
 
-                    <!-- Content -->
-                    <blockquote class="text-gray-300 leading-relaxed mb-6 text-sm">
-                        "{{ testimonial.content }}"
-                    </blockquote>
-
-                    <!-- Author -->
-                    <div class="flex items-center gap-3">
-                        <div
-                            class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-primary-600 flex items-center justify-center"
-                        >
+                <!-- Author Info -->
+                <div class="flex items-center justify-center gap-8 pt-8">
+                    <motion.div
+                        :key="`author-${activeIndex}`"
+                        :initial="{ opacity: 0, filter: 'blur(8px)' }"
+                        :animate="{ opacity: 1, filter: 'blur(0px)' }"
+                        :exit="{ opacity: 0, filter: 'blur(8px)' }"
+                        :transition="{ type: 'spring', duration: 0.5 }"
+                        class="flex items-center gap-4"
+                    >
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-accent-500 to-primary-600 flex items-center justify-center">
                             <span class="text-white font-bold text-lg">
-                                {{ testimonial.name.charAt(0) }}
+                                {{ testimonials[activeIndex].name.charAt(0) }}
                             </span>
                         </div>
-                        <div>
-                            <div class="text-white font-semibold">{{ testimonial.name }}</div>
-                            <div class="text-gray-400 text-sm">
-                                {{ testimonial.role }} at {{ testimonial.company }}
-                            </div>
+                        <div class="h-8 border-l border-gray-600 mx-4"></div>
+                        <div class="text-left">
+                            <div class="text-lg font-medium text-white italic">{{ testimonials[activeIndex].name }}</div>
+                            <div class="text-base text-gray-400">{{ testimonials[activeIndex].role }} at {{ testimonials[activeIndex].company }}</div>
                         </div>
-                    </div>
+                    </motion.div>
+                </div>
+
+                <!-- Progress Indicators -->
+                <div class="flex justify-center gap-3 mt-8">
+                    <motion.span
+                        v-for="(testimonial, i) in testimonials"
+                        :key="`indicator-${testimonial.uuid}`"
+                        :animate="{
+                            width: i === activeIndex ? BAR_WIDTH : CIRCLE_SIZE,
+                            height: CIRCLE_SIZE,
+                            borderRadius: i === activeIndex ? 8 : 999
+                        }"
+                        :transition="{ type: 'spring', stiffness: 300, damping: 30, duration: 0.4 }"
+                        class="relative overflow-hidden bg-white/10"
+                        :style="{ minWidth: `${CIRCLE_SIZE}px`, maxWidth: `${BAR_WIDTH}px` }"
+                    >
+                        <motion.div
+                            v-if="i === activeIndex"
+                            :key="`progress-${activeIndex}`"
+                            :initial="{ width: 0 }"
+                            :animate="{ width: '100%' }"
+                            :exit="{ width: 0 }"
+                            :transition="{ duration: DURATION / 1000, ease: 'linear' }"
+                            class="absolute top-0 left-0 h-full rounded-lg bg-accent-400"
+                        />
+                    </motion.span>
                 </div>
             </div>
 
             <!-- Submit Testimonial Button -->
-            <div class="text-center mt-12">
+            <div class="text-center mt-16">
                 <button
                     @click="isTestimonialModalOpen = true"
                     class="px-8 py-4 rounded-xl bg-gradient-to-r from-yellow-500 to-orange-500 hover:from-yellow-600 hover:to-orange-600 text-white font-semibold transition-all duration-300 hover:scale-105 flex items-center gap-3 mx-auto"
