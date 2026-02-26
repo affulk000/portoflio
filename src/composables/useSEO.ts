@@ -89,5 +89,3 @@ export const useSEO = (options: SEOOptions = {}) => {
             : [],
     });
 };
-
-export default getBaseUrl;
