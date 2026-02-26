@@ -51,11 +51,11 @@ CERTIFICATIONS
 ${certifications.map((cert: Certification) => `• ${cert.title} - ${cert.issuer} (${cert.date})`).join('\n')}
 `;
 
-        const blob = new Blob([content], { type: 'text/plain' });
+        const blob = new Blob([content], { type: 'application/pdf' });
         const url = URL.createObjectURL(blob);
         const a = document.createElement('a');
         a.href = url;
-        a.download = 'Emmanuel_Afful_CV.txt';
+        a.download = 'Emmanuel_Afful_CV.pdf';
         document.body.appendChild(a);
         a.click();
         document.body.removeChild(a);
