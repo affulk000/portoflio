@@ -8,58 +8,117 @@ import type { Project } from "@/data/projects";
 import type { SkillCategory } from "@/data/skills";
 import type { Education } from "@/data/education";
 import type { Certification } from "@/data/certification";
+import { jsPDF } from "jspdf";
 
 export const useGenerateCV = () => {
     const generateCV = () => {
-        const content = `
-EMMANUEL AFFUL
-System Software Engineer
-emmanuel.afful@proton.me | Accra, Ghana
-GitHub: github.com/affulk000 | LinkedIn: linkedin.com/in/emmanuel-afful-74336517b
+        const doc = new jsPDF();
+        let y = 20;
 
-PROFESSIONAL SUMMARY
-Backend Engineer specializing in Go, PostgreSQL, and multi-tenant SaaS architecture with 4+ years of experience building scalable, secure systems with clean architecture and modern infrastructure.
+        // Header
+        doc.setFontSize(20);
+        doc.text("EMMANUEL AFFUL", 20, y);
+        y += 10;
+        doc.setFontSize(12);
+        doc.text("System Software Engineer", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        doc.text("emmanuel.afful@proton.me | Accra, Ghana", 20, y);
+        y += 5;
+        doc.text("GitHub: github.com/affulk000 | LinkedIn: linkedin.com/in/emmanuel-afful-74336517b", 20, y);
+        y += 10;
 
-EXPERIENCE
-${experiences.map((exp: Experience) => `
-${exp.title} - ${exp.company}
-${exp.date} | ${exp.location}
-${exp.description}
-${exp.achievements.map((a: string) => `• ${a}`).join('\n')}
-`).join('\n')}
+        // Professional Summary
+        doc.setFontSize(14);
+        doc.text("PROFESSIONAL SUMMARY", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        const summary = doc.splitTextToSize("Backend Engineer specializing in Go, PostgreSQL, and multi-tenant SaaS architecture with 4+ years of experience building scalable, secure systems.", 170);
+        doc.text(summary, 20, y);
+        y += summary.length * 5 + 5;
 
-PROJECTS
-${projects.slice(0, 5).map((proj: Project) => `
-${proj.title}
-${proj.description}
-Technologies: ${proj.technologies.join(', ')}
-`).join('\n')}
+        // Experience
+        doc.setFontSize(14);
+        doc.text("EXPERIENCE", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        experiences.forEach((exp: Experience) => {
+            if (y > 270) { doc.addPage(); y = 20; }
+            doc.setFont(undefined, "bold");
+            doc.text(`${exp.title} - ${exp.company}`, 20, y);
+            y += 5;
+            doc.setFont(undefined, "normal");
+            doc.text(`${exp.date} | ${exp.location}`, 20, y);
+            y += 5;
+            const desc = doc.splitTextToSize(exp.description, 170);
+            doc.text(desc, 20, y);
+            y += desc.length * 5 + 3;
+        });
+        y += 5;
 
-TECHNICAL SKILLS
-${skillCategories.map((cat: SkillCategory) => `
-${cat.name}: ${cat.skills.map(i => i.name).join(', ')}
-`).join('\n')}
+        // Projects
+        if (y > 250) { doc.addPage(); y = 20; }
+        doc.setFontSize(14);
+        doc.text("PROJECTS", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        projects.slice(0, 3).forEach((proj: Project) => {
+            if (y > 270) { doc.addPage(); y = 20; }
+            doc.setFont(undefined, "bold");
+            doc.text(proj.title, 20, y);
+            y += 5;
+            doc.setFont(undefined, "normal");
+            const desc = doc.splitTextToSize(proj.description, 170);
+            doc.text(desc, 20, y);
+            y += desc.length * 5 + 3;
+        });
+        y += 5;
 
-EDUCATION
-${education.map((edu: Education) => `
-${edu.title} - ${edu.institution}
-${edu.startDate} to ${edu.endDate} | ${edu.location}
-${edu.description}
-`).join('\n')}
+        // Skills
+        if (y > 250) { doc.addPage(); y = 20; }
+        doc.setFontSize(14);
+        doc.text("TECHNICAL SKILLS", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        skillCategories.forEach((cat: SkillCategory) => {
+            if (y > 270) { doc.addPage(); y = 20; }
+            doc.setFont(undefined, "bold");
+            doc.text(`${cat.name}:`, 20, y);
+            doc.setFont(undefined, "normal");
+            doc.text(cat.skills.map(s => s.name).join(", "), 70, y);
+            y += 5;
+        });
+        y += 5;
 
-CERTIFICATIONS
-${certifications.map((cert: Certification) => `• ${cert.title} - ${cert.issuer} (${cert.date})`).join('\n')}
-`;
+        // Education
+        if (y > 250) { doc.addPage(); y = 20; }
+        doc.setFontSize(14);
+        doc.text("EDUCATION", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        education.forEach((edu: Education) => {
+            if (y > 270) { doc.addPage(); y = 20; }
+            doc.setFont(undefined, "bold");
+            doc.text(`${edu.title} - ${edu.institution}`, 20, y);
+            y += 5;
+            doc.setFont(undefined, "normal");
+            doc.text(`${edu.startDate} to ${edu.endDate} | ${edu.location}`, 20, y);
+            y += 7;
+        });
 
-        const blob = new Blob([content], { type: 'application/pdf' });
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'Emmanuel_Afful_CV.pdf';
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-        URL.revokeObjectURL(url);
+        // Certifications
+        if (y > 250) { doc.addPage(); y = 20; }
+        doc.setFontSize(14);
+        doc.text("CERTIFICATIONS", 20, y);
+        y += 7;
+        doc.setFontSize(10);
+        certifications.forEach((cert: Certification) => {
+            if (y > 270) { doc.addPage(); y = 20; }
+            doc.text(`• ${cert.title} - ${cert.issuer} (${cert.date})`, 20, y);
+            y += 5;
+        });
+
+        doc.save("Emmanuel_Afful_CV.pdf");
     };
 
     return { generateCV };
