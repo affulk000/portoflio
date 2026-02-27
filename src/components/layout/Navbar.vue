@@ -31,6 +31,10 @@ const handleScroll = () => {
     isScrolled.value = window.scrollY > 50;
 };
 
+const handleThemeToggle = () => {
+    toggleTheme();
+};
+
 const scrollToSection = (href: string) => {
     isMobileMenuOpen.value = false;
     const element = document.querySelector(href) as HTMLElement;
@@ -65,11 +69,14 @@ onUnmounted(() => {
         :class="[
             'fixed top-0 left-0 right-0 z-[1200] transition-all duration-500',
             isScrolled
-                ? 'bg-dark-600/80 backdrop-blur-xl shadow-2xl border-b border-white/10'
-                : 'bg-dark-600/40 backdrop-blur-md',
+                ? 'backdrop-blur-xl shadow-2xl border-b border-white/10'
+                : 'backdrop-blur-md',
         ]"
+        style="background: rgba(255, 255, 255, 0.05);"
     >
-        <div class="max-w-7xl mx-auto px-6 lg:px-8">
+        <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px" />
+        <div class="absolute inset-0 opacity-30 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px" />
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
             <div class="flex items-center justify-between h-20">
                 <!-- Logo/Brand -->
                 <a
@@ -113,7 +120,7 @@ onUnmounted(() => {
                 <!-- Theme Toggle & Contact Button (Desktop) -->
                 <div class="hidden lg:flex items-center gap-3 flex-shrink-0">
                     <button
-                        @click="toggleTheme"
+                        @click="handleThemeToggle"
                         class="p-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white transition-all duration-300 hover:scale-105"
                         :title="theme === 'system' ? 'System theme' : theme === 'dark' ? 'Dark mode' : 'Light mode'"
                     >
@@ -160,9 +167,12 @@ onUnmounted(() => {
         >
             <div
                 v-if="isMobileMenuOpen"
-                class="lg:hidden bg-dark-600/95 backdrop-blur-xl border-t border-white/10"
+                class="lg:hidden backdrop-blur-xl border-t border-white/10 relative"
+                style="background: rgba(255, 255, 255, 0.05);"
             >
-                <div class="max-w-7xl mx-auto px-4 py-4">
+                <div class="absolute inset-0 opacity-30" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px" />
+                <div class="absolute inset-0 opacity-30 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px" />
+                <div class="max-w-7xl mx-auto px-4 py-4 relative z-10">
                     <div class="flex flex-col gap-1">
                         <a
                             v-for="link in navLinks"
@@ -177,7 +187,7 @@ onUnmounted(() => {
 
                         <!-- Theme Toggle (Mobile) -->
                         <button
-                            @click="toggleTheme"
+                            @click="handleThemeToggle"
                             class="px-4 py-3.5 rounded-xl text-base font-medium text-gray-300 hover:text-white transition-all duration-300 hover:bg-white/10 flex items-center gap-3 active:scale-95"
                         >
                             <Icon 
