@@ -74,39 +74,32 @@ useSEO({
     },
 });
 
-const isLoading = ref(true);
-
-onMounted(() => {
-    // Remove loading delay for better SEO
-    isLoading.value = false;
-});
+const isLoading = ref(false);
 </script>
 
 <template>
   <div class="fixed inset-0 -z-10 bg-white dark:bg-gray-950">
-    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px" />
-    <div class="absolute inset-0 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px" />
+    <div class="absolute inset-0" style="background-image: radial-gradient(circle at 1px 1px, rgba(0, 0, 0, 0.35) 1px, transparent 0); background-size: 20px 20px; transform: translateZ(0)" />
+    <div class="absolute inset-0 hidden dark:block" style="background-image: radial-gradient(circle at 1px 1px, rgba(255, 255, 255, 0.15) 1px, transparent 0); background-size: 20px 20px; transform: translateZ(0)" />
     <div class="absolute inset-0 overflow-hidden">
-      <div class="absolute rounded-full blur-3xl opacity-30 bg-primary-300" style="top: 10%; left: 20%; width: 500px; height: 500px; animation: float 20s ease-in-out infinite" />
-      <div class="absolute rounded-full blur-3xl opacity-30 bg-accent-300" style="top: 60%; right: 10%; width: 600px; height: 600px; animation: float 20s ease-in-out infinite 2s" />
-      <div class="absolute rounded-full blur-3xl opacity-30 bg-primary-400" style="top: 40%; left: 50%; width: 450px; height: 450px; animation: float 20s ease-in-out infinite 4s" />
+      <div class="absolute rounded-full blur-3xl opacity-30 bg-primary-300" style="top: 10%; left: 20%; width: 500px; height: 500px; animation: float 20s ease-in-out infinite; transform: translateZ(0)" />
+      <div class="absolute rounded-full blur-3xl opacity-30 bg-accent-300" style="top: 60%; right: 10%; width: 600px; height: 600px; animation: float 20s ease-in-out infinite 2s; transform: translateZ(0)" />
+      <div class="absolute rounded-full blur-3xl opacity-30 bg-primary-400" style="top: 40%; left: 50%; width: 450px; height: 450px; animation: float 20s ease-in-out infinite 4s; transform: translateZ(0)" />
     </div>
   </div>
-  <div v-if="!isLoading">
-    <ScrollProgress />
-    <NavBar />
-    <main>
-      <HeroSection />
-      <AboutSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <TestimonialsSection />
-      <BlogSection />
-      <CertificationsSection />
-    </main>
-    <Footer />
-  </div>
+  <ScrollProgress />
+  <NavBar />
+  <main>
+    <HeroSection />
+    <AboutSection />
+    <ExperienceSection />
+    <ProjectsSection />
+    <SkillsSection />
+    <TestimonialsSection />
+    <BlogSection />
+    <CertificationsSection />
+  </main>
+  <Footer />
 </template>
 
 <style>
@@ -114,5 +107,13 @@ onMounted(() => {
   0%, 100% { transform: translate(0, 0) scale(1); }
   33% { transform: translate(30px, -30px) scale(1.1); }
   66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
 </style>
