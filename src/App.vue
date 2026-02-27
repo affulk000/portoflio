@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
 import { useSEO } from "@/composables/useSEO";
 import HeroSection from "@/components/sections/HeroSection.vue";
 import AboutSection from "@/components/sections/AboutSection.vue";
@@ -73,8 +72,6 @@ useSEO({
         ],
     },
 });
-
-const isLoading = ref(false);
 </script>
 
 <template>
